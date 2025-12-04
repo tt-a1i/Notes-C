@@ -1,0 +1,242 @@
+/* General Page Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+main {
+    flex: 1; /* Allows main to grow and push footer down */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content like animation container */
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+}
+
+/* Controls Container Styling */
+#controls-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    gap: 20px; /* Space between control groups */
+    justify-content: center;
+    width: 100%;
+    max-width: 900px; /* Max width for the controls area */
+    box-sizing: border-box;
+}
+
+/* Individual Control Groups */
+#algorithm-selection, 
+#array-controls, 
+#animation-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between elements within a group */
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+}
+
+#algorithm-selection label,
+#array-controls label,
+#animation-controls label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+/* Select Dropdown Styling */
+#algorithm, 
+input[type="range"], 
+button {
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+}
+
+#algorithm {
+    cursor: pointer;
+}
+
+/* Button Styling */
+button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    background-color: #004085;
+}
+
+button#generate-array {
+    background-color: #28a745; /* Green for generate */
+}
+button#generate-array:hover {
+    background-color: #1e7e34;
+}
+
+button#reset-sort {
+    background-color: #dc3545; /* Red for reset */
+}
+button#reset-sort:hover {
+    background-color: #b02a37;
+}
+
+button#pause-sort {
+    background-color: #ffc107; /* Yellow for pause */
+    color: #212529;
+}
+button#pause-sort:hover {
+    background-color: #e0a800;
+}
+
+
+/* Slider Styling */
+input[type="range"] {
+    cursor: pointer;
+    padding: 0; /* Remove default padding for range */
+}
+
+/* Animation Container Styling */
+#animation-container {
+    width: 90%; /* Relative width */
+    max-width: 900px; /* Max width */
+    height: 400px; /* Fixed height */
+    border: 2px solid #007bff;
+    background-color: #fff;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center; /* Center bars if not filling width */
+    align-items: flex-end; /* Align bars to the bottom */
+    padding: 10px; /* Padding inside the container */
+    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden; /* Hide parts of bars that might exceed container due to calculation issues */
+}
+
+/* Bar Styling */
+.bar {
+    background-color: #58a6ff; /* A lighter blue for bars */
+    /* Width and margin will be set by JavaScript for dynamic sizing */
+    /* display: inline-block; // Not needed if using flex on container */
+    /* vertical-align: bottom; // Not needed if using flex on container */
+    transition: height 0.1s ease-out, background-color 0.1s ease-out; /* Smooth transitions */
+    box-sizing: border-box;
+    border: 1px solid #007bff; /* Border for definition */
+    border-bottom: none; /* Avoid double border with container bottom */
+}
+
+.bar-label {
+    display: block;
+    text-align: center;
+    font-size: 0.7rem;
+    color: #333;
+    margin-top: -15px; /* Adjust to position above or inside bar */
+    opacity: 0; /* Hidden by default, shown for small arrays via JS if needed */
+    transition: opacity 0.2s;
+}
+
+/* Highlighted bar for comparisons, swaps, etc. */
+.bar.highlighted-compare {
+    background-color: #ffc107; /* Yellow */
+}
+
+.bar.highlighted-swap {
+    background-color: #dc3545; /* Red */
+}
+
+.bar.sorted {
+    background-color: #28a745; /* Green */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    #controls-container {
+        flex-direction: column; /* Stack control groups vertically */
+        align-items: stretch; /* Make groups take full width */
+    }
+
+    #algorithm-selection, 
+    #array-controls, 
+    #animation-controls {
+        flex-direction: column; /* Stack items within each group */
+        align-items: stretch;
+    }
+
+    #algorithm-selection > *, 
+    #array-controls > *, 
+    #animation-controls > * {
+        width: 100%; /* Make inputs/buttons full width */
+        box-sizing: border-box;
+        margin-bottom: 10px; /* Add some space between stacked items */
+    }
+    
+    #animation-container {
+        height: 300px; /* Reduce height on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        padding: 10px;
+    }
+
+    #controls-container {
+        padding: 10px;
+    }
+    
+    #animation-container {
+        height: 250px; /* Further reduce height */
+    }
+
+    button {
+        padding: 10px 5px; /* Adjust button padding */
+        font-size: 0.8rem;
+    }
+
+    #algorithm {
+        font-size: 0.8rem;
+    }
+}

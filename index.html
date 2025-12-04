@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithm Visualization</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Sorting Algorithm Visualization</h1>
+    </header>
+
+    <main>
+        <div id="controls-container">
+            <div id="algorithm-selection">
+                <label for="algorithm">Choose Algorithm:</label>
+                <select id="algorithm" name="algorithm">
+                    <option value="bubble">Bubble Sort</option>
+                    <option value="selection">Selection Sort</option>
+                    <option value="insertion">Insertion Sort</option>
+                    <option value="merge">Merge Sort</option>
+                    <option value="quick">Quick Sort</option>
+                    <option value="heap">Heap Sort</option>
+                </select>
+            </div>
+
+            <div id="array-controls">
+                <label for="array-size">Array Size:</label>
+                <input type="range" id="array-size" name="array-size" min="10" max="200" value="50">
+                <button id="generate-array">Generate New Array</button>
+            </div>
+            
+            <div id="animation-controls">
+                <button id="start-sort">Start</button>
+                <button id="pause-sort">Pause</button>
+                <button id="reset-sort">Reset</button>
+                <label for="speed-slider">Speed:</label>
+                <input type="range" id="speed-slider" name="speed-slider" min="1" max="10" value="5">
+            </div>
+        </div>
+
+        <div id="animation-container">
+            <!-- Bars representing array elements will be dynamically generated here -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Sorting Visualizer</p>
+    </footer>
+
+    <script src="sorting_algorithms.js"></script>
+    <script src="animation.js"></script>
+</body>
+</html>
